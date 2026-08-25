@@ -1,0 +1,171 @@
+@import 'tailwindcss';
+
+/* Dark mode controlado por classe no <html>, não por media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------
+   PALETA
+   Monocromática e quente (papel + tinta), com um único acento
+   usado com parcimônia: links, foco do teclado e detalhes.
+   Troque os valores aqui e o site inteiro acompanha.
+---------------------------------------------------------------- */
+:root {
+  --canvas: #fcfbf8;
+  --surface: #ffffff;
+  --ink: #14130f;
+  --ink-soft: #6b675e;
+  --ink-faint: #9a9488;
+  --line: #e7e3d9;
+  --accent: #2f5d50;
+  --accent-contrast: #ffffff;
+  --shadow-card: 0 1px 2px rgb(20 19 15 / 0.04), 0 12px 32px -18px rgb(20 19 15 / 0.35);
+}
+
+.dark {
+  --canvas: #0f0f0e;
+  --surface: #171716;
+  --ink: #f3f1ea;
+  --ink-soft: #a09a8d;
+  --ink-faint: #6f6a60;
+  --line: #2a2926;
+  --accent: #8fbfae;
+  --accent-contrast: #0f0f0e;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px -20px rgb(0 0 0 / 0.8);
+}
+
+/* ---------------------------------------------------------------
+   TOKENS EXPOSTOS AO TAILWIND
+   Geram utilitários: bg-canvas, text-ink, border-line, font-display,
+   text-hero, text-display, text-eyebrow...
+---------------------------------------------------------------- */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+
+  --font-display: 'Cormorant Garamond', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --text-hero: clamp(3rem, 11vw, 8.5rem);
+  --text-hero--line-height: 0.92;
+  --text-hero--letter-spacing: -0.03em;
+
+  --text-display: clamp(2rem, 5.5vw, 3.75rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-title: clamp(1.25rem, 2.2vw, 1.75rem);
+  --text-title--line-height: 1.15;
+
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1;
+  --text-eyebrow--letter-spacing: 0.18em;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------------------------------------------------------------
+   BASE
+---------------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition:
+      background-color 320ms var(--ease-out-soft),
+      color 320ms var(--ease-out-soft);
+  }
+
+  ::selection {
+    background-color: var(--ink);
+    color: var(--canvas);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* ---------------------------------------------------------------
+   UTILITÁRIOS DO PROJETO
+---------------------------------------------------------------- */
+@utility shell {
+  /* Largura útil da página, usada por header, grade e rodapé. */
+  width: 100%;
+  margin-inline: auto;
+  max-width: 84rem;
+  padding-inline: 1.25rem;
+
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility card-shadow {
+  box-shadow: var(--shadow-card);
+}
+
+/* Revelação no scroll (IntersectionObserver adiciona data-visible="true"). */
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 700ms var(--ease-out-soft),
+      transform 700ms var(--ease-out-soft);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Acessibilidade: quem pediu menos movimento, recebe menos movimento. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

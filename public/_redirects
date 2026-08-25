@@ -1,0 +1,3 @@
+# Necessário no deploy por arrastar-e-soltar: sem isso, atualizar a página
+# de um projeto (/projeto/algum-slug) retorna 404.
+/*    /index.html   200
