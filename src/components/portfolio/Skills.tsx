@@ -19,26 +19,26 @@ export function Skills() {
 
   return (
     <section id="competencias" className="scroll-mt-24 border-t border-line">
-      <div className="shell py-20 md:py-28">
+      <div className="shell py-14 md:py-20">
         <Reveal>
           <p className="text-eyebrow font-medium text-ink-faint uppercase">{t.skillsTitle}</p>
         </Reveal>
 
         <Reveal delay={80}>
-          <p className="mt-6 max-w-2xl text-base text-ink-soft md:text-lg">{t.skillsIntro}</p>
+          <p className="mt-4 max-w-2xl text-base text-ink-soft">{t.skillsIntro}</p>
         </Reveal>
 
-        <div className="mt-14 space-y-12 md:mt-20 md:space-y-16">
+        <div className="mt-10 space-y-9 md:mt-12 md:space-y-10">
           {groups.map((group, groupIndex) => (
             <Reveal key={group.title} delay={Math.min(groupIndex, 4) * 60}>
-              <div className="grid gap-6 md:grid-cols-12 md:gap-16">
+              <div className="grid gap-3 md:grid-cols-12 md:gap-12">
                 <h3 className="font-display text-title md:col-span-4">{group.title}</h3>
 
                 <ul className="md:col-span-8">
                   {group.items.map((skill) => (
                     <li
                       key={skill.name}
-                      className="flex items-center justify-between gap-6 border-b border-line py-3 last:border-b-0"
+                      className="flex items-center justify-between gap-6 border-b border-line py-2 last:border-b-0"
                     >
                       <span className="text-sm md:text-base">{skill.name}</span>
 

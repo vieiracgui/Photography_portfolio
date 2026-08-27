@@ -21,11 +21,11 @@ export function HomePage() {
       <Skills />
 
       <section id="trabalhos" className="scroll-mt-24 border-t border-line">
-        <div className="shell py-20 md:py-28">
+        <div className="shell py-14 md:py-20">
           <p className="text-eyebrow font-medium text-ink-faint uppercase">{t.worksTitle}</p>
-          <p className="mt-6 max-w-2xl text-base text-ink-soft md:text-lg">{t.worksIntro}</p>
+          <p className="mt-4 max-w-2xl text-base text-ink-soft">{t.worksIntro}</p>
 
-          <div className="mt-12 md:mt-16">
+          <div className="mt-8 md:mt-10">
             <MasonryGrid projects={projects} />
           </div>
         </div>

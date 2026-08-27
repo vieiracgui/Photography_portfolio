@@ -1,13 +1,13 @@
-import { Reveal } from "@/components/ui/Reveal";
-import { site } from "@/content/site";
-import { ui } from "@/content/ui";
-import { useLanguage } from "@/hooks/useLanguage";
+import { Reveal } from '@/components/ui/Reveal';
+import { site } from '@/content/site';
+import { ui } from '@/content/ui';
+import { useLanguage } from '@/hooks/useLanguage';
 
 /**
  * 👉 SUA FOTO: o arquivo deve estar em public/images.
  *    Troque aqui se o nome for outro.
  */
-const PHOTO_SRC = "/images/Sobre_1.jpg";
+const PHOTO_SRC = '/images/sobre.jpg';
 
 export function Hero() {
   const { lang } = useLanguage();
@@ -15,39 +15,35 @@ export function Hero() {
   const content = site[lang];
 
   return (
-    <section className="shell pt-14 pb-16 md:pt-24 md:pb-24">
-      <div className="grid items-center gap-10 md:grid-cols-12 md:gap-16">
+    <section className="shell pt-10 pb-12 md:pt-16 md:pb-16">
+      <div className="grid items-center gap-8 md:grid-cols-12 md:gap-12">
         <Reveal className="md:col-span-5">
           <img
             src={PHOTO_SRC}
             alt={`Retrato de ${content.name}`}
             loading="eager"
             decoding="async"
-            className="mx-auto aspect-square w-56 rounded-full object-cover bg-surface card-shadow sm:w-72 md:mx-0 md:w-full md:max-w-sm"
+            className="mx-auto aspect-square w-44 rounded-full object-cover bg-surface card-shadow sm:w-56 md:mx-0 md:w-full md:max-w-[17rem]"
           />
         </Reveal>
 
         <div className="md:col-span-7">
           <Reveal delay={80}>
-            <p className="text-eyebrow font-medium text-ink-faint uppercase">
-              {t.heroGreeting}
-            </p>
+            <p className="text-eyebrow font-medium text-ink-faint uppercase">{t.heroGreeting}</p>
           </Reveal>
 
           <Reveal delay={140}>
-            <h1 className="mt-4 font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] tracking-[-0.015em] font-light">
+            <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] tracking-[-0.015em] font-light">
               {content.name}
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="mt-3 text-lg text-ink-soft md:text-xl">
-              {content.role}
-            </p>
+            <p className="mt-2 text-lg text-ink-soft md:text-xl">{content.role}</p>
           </Reveal>
 
           <Reveal delay={260}>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <div className="mt-7 flex flex-wrap items-center gap-3">
               <a
                 href="#contato"
                 className="rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity duration-300 hover:opacity-85"

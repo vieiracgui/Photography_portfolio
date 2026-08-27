@@ -10,17 +10,17 @@ export function Footer() {
 
   return (
     <footer id="contato" className="border-t border-line">
-      <div className="shell py-20 md:py-28">
+      <div className="shell py-14 md:py-20">
         <p className="text-eyebrow font-medium text-ink-faint uppercase">{t.contactTitle}</p>
 
         <a
           href={`mailto:${content.email}`}
-          className="mt-6 inline-block font-display text-display underline decoration-line decoration-1 underline-offset-[0.18em] transition-colors duration-300 hover:decoration-accent"
+          className="mt-4 inline-block font-display text-display underline decoration-line decoration-1 underline-offset-[0.18em] transition-colors duration-300 hover:decoration-accent"
         >
           {content.email}
         </a>
 
-        <div className="mt-14 flex flex-col gap-6 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-ink-soft">
             © {currentYear()} {content.name} — {content.location}
           </p>
