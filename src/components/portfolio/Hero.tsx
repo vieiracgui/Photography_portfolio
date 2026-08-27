@@ -1,13 +1,13 @@
-import { Reveal } from '@/components/ui/Reveal';
-import { site } from '@/content/site';
-import { ui } from '@/content/ui';
-import { useLanguage } from '@/hooks/useLanguage';
+import { Reveal } from "@/components/ui/Reveal";
+import { site } from "@/content/site";
+import { ui } from "@/content/ui";
+import { useLanguage } from "@/hooks/useLanguage";
 
 /**
  * 👉 SUA FOTO: o arquivo deve estar em public/images.
  *    Troque aqui se o nome for outro.
  */
-const PHOTO_SRC = '/images/sobre.jpg';
+const PHOTO_SRC = "/images/Sobre_1.jpg";
 
 export function Hero() {
   const { lang } = useLanguage();
@@ -29,7 +29,9 @@ export function Hero() {
 
         <div className="md:col-span-7">
           <Reveal delay={80}>
-            <p className="text-eyebrow font-medium text-ink-faint uppercase">{t.heroGreeting}</p>
+            <p className="text-eyebrow font-medium text-ink-faint uppercase">
+              {t.heroGreeting}
+            </p>
           </Reveal>
 
           <Reveal delay={140}>
@@ -39,7 +41,9 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="mt-2 text-lg text-ink-soft md:text-xl">{content.role}</p>
+            <p className="mt-2 text-lg text-ink-soft md:text-xl">
+              {content.role}
+            </p>
           </Reveal>
 
           <Reveal delay={260}>
