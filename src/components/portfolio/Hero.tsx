@@ -1,28 +1,74 @@
-import { Reveal } from '@/components/ui/Reveal';
-import { site } from '@/content/site';
-import { useLanguage } from '@/hooks/useLanguage';
+import { Reveal } from "@/components/ui/Reveal";
+import { site } from "@/content/site";
+import { ui } from "@/content/ui";
+import { useLanguage } from "@/hooks/useLanguage";
+
+/**
+ * 👉 SUA FOTO: o arquivo deve estar em public/images.
+ *    Troque aqui se o nome for outro.
+ */
+const PHOTO_SRC = "/images/Sobre_1.jpg";
 
 export function Hero() {
   const { lang } = useLanguage();
+  const t = ui[lang];
   const content = site[lang];
 
   return (
-    <section className="shell pt-14 pb-12 md:pt-24 md:pb-16">
-      <Reveal>
-        <p className="text-eyebrow font-medium text-ink-faint uppercase">
-          {content.role} — {content.location}
-        </p>
-      </Reveal>
+    <section className="shell pt-14 pb-16 md:pt-24 md:pb-24">
+      <div className="grid items-center gap-10 md:grid-cols-12 md:gap-16">
+        <Reveal className="md:col-span-5">
+          <img
+            src={PHOTO_SRC}
+            alt={`Retrato de ${content.name}`}
+            loading="eager"
+            decoding="async"
+            className="mx-auto aspect-square w-56 rounded-full object-cover bg-surface card-shadow sm:w-72 md:mx-0 md:w-full md:max-w-sm"
+          />
+        </Reveal>
 
-      <Reveal delay={90}>
-        <h1 className="mt-5 max-w-[24ch] font-display text-[clamp(2.5rem,6vw,4.75rem)] leading-[1.06] tracking-[-0.015em] font-light">
-          {content.heroLine}
-        </h1>
-      </Reveal>
+        <div className="md:col-span-7">
+          <Reveal delay={80}>
+            <p className="text-eyebrow font-medium text-ink-faint uppercase">
+              {t.heroGreeting}
+            </p>
+          </Reveal>
 
-      <Reveal delay={180}>
-        <p className="mt-6 max-w-xl text-base text-ink-soft md:text-lg">{content.heroSupport}</p>
-      </Reveal>
+          <Reveal delay={140}>
+            <h1 className="mt-4 font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] tracking-[-0.015em] font-light">
+              {content.name}
+            </h1>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <p className="mt-3 text-lg text-ink-soft md:text-xl">
+              {content.role}
+            </p>
+          </Reveal>
+
+          <Reveal delay={260}>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <a
+                href="#contato"
+                className="rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity duration-300 hover:opacity-85"
+              >
+                {t.contactCta}
+              </a>
+
+              {content.cvUrl ? (
+                <a
+                  href={content.cvUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="rounded-full border border-ink px-6 py-3 text-sm font-medium transition-colors duration-300 hover:bg-ink hover:text-canvas"
+                >
+                  {t.downloadCv}
+                </a>
+              ) : null}
+            </div>
+          </Reveal>
+        </div>
+      </div>
     </section>
   );
 }

@@ -12,6 +12,7 @@ export function Header() {
   const t = ui[lang];
 
   const navItems = [
+    { label: t.navSkills, href: '/#competencias' },
     { label: t.navWorks, href: '/#trabalhos' },
     { label: t.navAbout, href: '/#sobre' },
     { label: t.navContact, href: '/#contato' },

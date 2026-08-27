@@ -68,6 +68,19 @@ export interface SocialLink {
   readonly url: string;
 }
 
+/** Nível de domínio de uma habilidade. */
+export type SkillLevel = 'basic' | 'intermediate' | 'advanced';
+
+export interface Skill {
+  readonly name: string;
+  readonly level: SkillLevel;
+}
+
+export interface SkillGroup {
+  readonly title: string;
+  readonly items: readonly Skill[];
+}
+
 export interface SiteConfig {
   readonly name: string;
   readonly role: string;
@@ -76,7 +89,10 @@ export interface SiteConfig {
   readonly heroSupport: string;
   readonly about: readonly string[];
   readonly services: readonly string[];
+  readonly skills: readonly SkillGroup[];
   readonly email: string;
+  /** Caminho do currículo em PDF (ex.: '/cv.pdf'). Remova a linha para esconder o botão. */
+  readonly cvUrl?: string;
   readonly socials: readonly SocialLink[];
   readonly seo: {
     readonly title: string;
