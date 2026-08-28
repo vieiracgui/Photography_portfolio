@@ -85,9 +85,9 @@ export const site: Record<Language, SiteConfig> = {
     ],
     email: "contato.guilhermevieira31@gmail.com",
     // 👉 Coloque o PDF em public/ com o nome cv.pdf. Apague a linha para esconder o botão.
-    cvUrl: "/cv.pdf",
+    cvUrl: "/images/Guilherme_Vieira_Resume (1).pdf",
     socials: [
-      { label: "Instagram", url: "https://instagram.com/seuusuario" },
+      { label: "Instagram", url: "https://www.instagram.com/Vieirac.jpeg" },
       { label: "LinkedIn", url: "https://www.linkedin.com/in/vieiracgui" },
       { label: "GitHub", url: "https://github.com/vieiracgui" },
     ],
@@ -172,9 +172,9 @@ export const site: Record<Language, SiteConfig> = {
     ],
     email: "contato.guilhermevieira31@gmail.com",
     // 👉 Coloque o PDF em public/ com o nome cv.pdf. Apague a linha para esconder o botão.
-    cvUrl: "/cv.pdf",
+    cvUrl: "/images/Guilherme_Vieira_Resume (1).pdf",
     socials: [
-      { label: "Instagram", url: "https://instagram.com/seuusuario" },
+      { label: "Instagram", url: "https://www.instagram.com/vieirac.jpeg" },
       { label: "LinkedIn", url: "https://www.linkedin.com/in/vieiracgui" },
       { label: "GitHub", url: "https://github.com/vieiracgui" },
     ],
